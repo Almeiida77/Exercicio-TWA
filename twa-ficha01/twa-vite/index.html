@@ -1,13 +1,33 @@
+
 <!doctype html>
-<html lang="en">
+<html lang="pt">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>twa-vite</title>
+    <title>Catálogo de produtos</title>
   </head>
   <body>
-    <div id="app"></div>
+    <h1>Catálogo de produtos</h1>
+
+    <label for="search">Pesquisar:</label>
+    <input id="search" type="search" placeholder="Nome do produto..." />
+
+    <label for="category">Categoria:</label>
+    <select id="category">
+      <option value="">Todas as categorias</option>
+    </select>
+
+    <label for="sort">Ordenar:</label>
+    <select id="sort">
+      <option value="name">Nome</option>
+      <option value="price-asc">Preço crescente</option>
+      <option value="price-desc">Preço decrescente</option>
+    </select>
+
+    <p id="status"></p>
+
+    <ul id="items"></ul>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

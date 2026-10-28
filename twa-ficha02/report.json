@@ -1,0 +1,23 @@
+{
+  "count": 10,
+  "total": 358.77,
+  "categories": [
+    "book",
+    "game",
+    "tool"
+  ],
+  "top3": [
+    {
+      "name": "Mechanical keyboard, 65%",
+      "price": 89
+    },
+    {
+      "name": "Designing Data-Intensive Applications",
+      "price": 48
+    },
+    {
+      "name": "The Pragmatic Programmer",
+      "price": 39.9
+    }
+  ]
+}

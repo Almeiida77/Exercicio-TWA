@@ -1,35 +1,33 @@
+// catalog.js — funções puras sobre uma lista de itens · pure functions over a list of items.
+// Sem I/O, sem console.log, sem ciclos: cada função recebe a lista e devolve um valor novo.
+// No I/O, no console.log, no loops: every function takes the list and returns a new value.
 
-export function byCategory(list, cat) { //devolve apenas os jogos da categoria RPG.
-  return list.filter(({ category }) => category === cat);
-}
+export const byCategory = (list, cat) =>
+  list.filter((item) => item.category === cat)
 
-export function search(list, text) { //(toLowerCase) é case-insensitive, portanto Riot, riot e RIOT funcionam 
-  const searchText = text.toLowerCase();
-
+// nome OU tags, sem distinguir maiúsculas · name OR tags, case-insensitive
+export const search = (list, text) => {
+  const needle = text.toLowerCase()
   return list.filter(({ name, tags }) =>
-    name.toLowerCase().includes(searchText) ||
-    tags.some(tag => tag.toLowerCase().includes(searchText))
-  );
+    [name, ...tags].some((t) => t.toLowerCase().includes(needle)))
 }
 
-export function total(list) { //Soma todos os preços usando reduce()
-  return list.reduce((sum, { price }) => sum + price, 0);
-}
+export const total = (list) =>
+  list.reduce((sum, { price }) => sum + price, 0)
 
-export function top(list, n) { //devolve os 3 mais caros, ordenados do mais caro para o mais barato.
-  return list
-    .toSorted((a, b) => b.price - a.price) //tosorted não altera o array original.
-    .slice(0, n);
-}
+// os n mais caros, array novo, do mais caro para o mais barato · n most expensive, new array, desc
+export const top = (list, n) =>
+  list.toSorted((a, b) => b.price - a.price).slice(0, n)
 
-export function categories(list) { //devolve uma lista de categorias únicas, ordenadas alfabeticamente.
-  return [...new Set(list.map(({ category }) => category))]
-    .toSorted();
-}
+// categorias únicas, ordenadas · unique categories, sorted
+export const categories = (list) =>
+  [...new Set(list.map((item) => item.category))].toSorted()
 
-export function withDiscount(list, pct) { //devolve uma lista de jogos com o preço atualizado com o 20% de desconto, sem alterar o array original.
-  return list.map(item => ({
-    ...item,
-    price: item.price * (1 - pct / 100)
-  }));
-}
+// itens NOVOS com desconto; os originais não mudam · NEW items with a discount; originals untouched
+export const withDiscount = (list, pct) =>
+  list.map((item) => ({ ...item, price: round2(item.price * (1 - pct / 100)) }))
+
+// bónus · bonus
+export const groupByCategory = (list) => Object.groupBy(list, (item) => item.category)
+
+const round2 = (n) => Math.round(n * 100) / 100
