@@ -1,0 +1,37 @@
+
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catálogo de artigos</title>
+  </head>
+  <body>
+    <h1>Catálogo de artigos</h1>
+
+    <label for="search">Pesquisar:</label>
+    <input id="search" type="search" placeholder="Nome do artigo..." />
+
+    <label for="category">Categoria:</label>
+    <select id="category">
+      <option value="">Todas as categorias</option>
+    </select>
+
+    <label for="sort">Ordenar por:</label>
+    
+<select id="sort">
+  <option value="desc">Preço: decrescente</option>
+  <option value="asc">Preço: crescente</option>
+</select>
+
+
+    <p id="status">A preparar o catálogo...</p>
+
+    <ul id="list"></ul>
+
+  <section id="detail">
+    <p>Seleciona um artigo para ver os detalhes.</p>
+  </section>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
